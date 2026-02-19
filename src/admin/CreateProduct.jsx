@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Col, Container, Row, Form, Button } from "react-bootstrap";
 import AdminMenu from "../assets/AdminMenu";
 import { useAuth } from "../context/auth";
+import { API_BASE_URL } from "../config/api";
 
 function CreateProduct() {
   const { auth } = useAuth();
@@ -17,7 +18,7 @@ function CreateProduct() {
 
   const getAllCategories = async () => {
     try {
-      const response = await fetch("/category/all-categories");
+      const response = await fetch(`${API_BASE_URL}/category/all-categories`);
       const data = await response.json();
       if (data?.success) {
         setCategories(data.categories);
@@ -53,7 +54,7 @@ function CreateProduct() {
         productData.append("photo", formData.photo);
       }
 
-      const response = await fetch("/product/create-product", {
+      const response = await fetch(`${API_BASE_URL}/product/create-product`, {
         method: "POST",
         headers: {
           Authorization: auth.token,

@@ -3,6 +3,7 @@ import { Col, Container, Row, Form, Button } from "react-bootstrap";
 import AdminMenu from "../assets/AdminMenu";
 import { useAuth } from "../context/auth";
 import { useParams, useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../config/api";
 
 function UpdateProduct() {
   const { auth } = useAuth();
@@ -22,7 +23,7 @@ function UpdateProduct() {
 
   const getAllCategories = async () => {
     try {
-      const response = await fetch("/category/all-categories");
+      const response = await fetch(`${API_BASE_URL}/category/all-categories`);
       const data = await response.json();
       if (data?.success) {
         setCategories(data.categories);
@@ -34,7 +35,7 @@ function UpdateProduct() {
 
   const getProduct = async () => {
     try {
-      const response = await fetch(`/product/get-product/${id}`);
+      const response = await fetch(`${API_BASE_URL}/product/get-product/${id}`);
       const data = await response.json();
       if (data?.success) {
         const product = data.product;
@@ -81,7 +82,7 @@ function UpdateProduct() {
         productData.append("photo", formData.photo);
       }
 
-      const response = await fetch(`/product/update-product/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/product/update-product/${id}`, {
         method: "PUT",
         headers: {
           Authorization: auth.token,
@@ -175,7 +176,7 @@ function UpdateProduct() {
                 <Form.Label>Current Photo</Form.Label>
                 <div>
                   <img
-                    src={`/product/product-photo/${id}`}
+                    src={`${API_BASE_URL}/product/product-photo/${id}`}
                     alt="Current product"
                     style={{
                       maxWidth: "200px",

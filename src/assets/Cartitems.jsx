@@ -2,6 +2,7 @@ import React from "react";
 import { useCart } from "../context/cart";
 import { useAuth } from "../context/auth";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../config/api";
 import {
   FaShoppingCart,
   FaReceipt,
@@ -174,7 +175,7 @@ function Cartitems() {
                       {/* Product Image */}
                       <div className="col-3 col-md-2">
                         <img
-                          src={`/product/product-photo/${item._id}`}
+                          src={`${API_BASE_URL}/product/product-photo/${item._id}`}
                           alt={item.name}
                           className="img-fluid rounded"
                           style={{

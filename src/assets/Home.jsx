@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSearch } from "../context/search";
 import { useCart } from "../context/cart";
+import { API_BASE_URL } from "../config/api";
 import {
   FaSearch,
   FaShoppingCart,
@@ -68,7 +69,7 @@ function Home() {
   // Fetch all categories
   const getAllCategories = async () => {
     try {
-      const response = await fetch("/category/all-categories");
+      const response = await fetch(`${API_BASE_URL}/category/all-categories`);
       const data = await response.json();
       if (data.success) {
         setCategories(data.categories);
@@ -82,7 +83,7 @@ function Home() {
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const response = await fetch("/product/all-products");
+      const response = await fetch(`${API_BASE_URL}/product/all-products`);
       const data = await response.json();
       if (data.success) {
         setProducts(data.products);
@@ -98,7 +99,7 @@ function Home() {
   const filterProducts = async () => {
     try {
       setLoading(true);
-      const response = await fetch("/product/filtered-products", {
+      const response = await fetch(`${API_BASE_URL}/product/filtered-products`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -120,7 +121,7 @@ function Home() {
   const searchProducts = async (keyword) => {
     try {
       setLoading(true);
-      const response = await fetch(`/product/search-product/${keyword}`);
+      const response = await fetch(`${API_BASE_URL}/product/search-product/${keyword}`);
       const data = await response.json();
       setProducts(data);
       setLoading(false);
@@ -602,7 +603,7 @@ function Home() {
                             }}
                           >
                             <img
-                              src={`/product/product-photo/${product._id}`}
+                              src={`${API_BASE_URL}/product/product-photo/${product._id}`}
                               className="w-100 h-100"
                               alt={product.name}
                               style={{

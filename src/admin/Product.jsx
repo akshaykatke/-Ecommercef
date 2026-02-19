@@ -3,6 +3,7 @@ import { Col, Container, Row, Card, Button, Modal } from "react-bootstrap";
 import AdminMenu from "../assets/AdminMenu";
 import { useAuth } from "../context/auth";
 import { Link } from "react-router-dom";
+import { API_BASE_URL } from "../config/api";
 
 function Product() {
   const { auth } = useAuth();
@@ -12,7 +13,7 @@ function Product() {
 
   const getAllProducts = async () => {
     try {
-      const response = await fetch("/product/all-products");
+      const response = await fetch(`${API_BASE_URL}/product/all-products`);
       const data = await response.json();
       if (data?.success) {
         setProducts(data.products);
@@ -29,7 +30,7 @@ function Product() {
   const handleDelete = async () => {
     try {
       const response = await fetch(
-        `/product/delete-product/${selectedProduct._id}`,
+        `${API_BASE_URL}/product/delete-product/${selectedProduct._id}`,
         {
           method: "DELETE",
           headers: {
@@ -106,7 +107,7 @@ function Product() {
                     <div style={{ height: "220px", overflow: "hidden" }}>
                       <Card.Img
                         variant="top"
-                        src={`/product/product-photo/${product._id}`}
+                        src={`${API_BASE_URL}/product/product-photo/${product._id}`}
                         alt={product.name}
                         style={{
                           height: "100%",
