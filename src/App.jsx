@@ -11,7 +11,7 @@ import Home from "./assets/Home";
 import Signin from "./assets/Signin";
 import Signup from "./assets/Signup";
 import Cartitems from "./assets/Cartitems";
-import PrivateRoute from "./assets/privateRoute";
+import PrivateRoute from "./assets/PrivateRoute";
 import Dashboard from "./user/Dashboard";
 import AdminRoute from "./assets/AdminRoute";
 import AdminDashboard from "./admin/AdminDashboard";
@@ -19,7 +19,7 @@ import CreateCategory from "./admin/CreateCategory";
 import CreateProduct from "./admin/CreateProduct";
 import Product from "./admin/Product";
 import UpdateProduct from "./admin/UpdateProduct";
-import Orders from "./user/orders";
+import Orders from "./user/Orders";
 import { Authprovider } from "./context/auth";
 import { CartProvider } from "./context/cart";
 
