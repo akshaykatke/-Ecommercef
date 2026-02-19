@@ -1,0 +1,58 @@
+.root {
+  --primary: #0d6efd;
+  --bg: #f8f9fa;
+  --muted: #6c757d;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial;
+  background: var(--bg);
+  color: #212529;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.navbar a,
+.nav-link {
+  color: rgba(255, 255, 255, 0.95) !important;
+  text-decoration: none;
+  font-size: 16px;
+  margin-right: 12px;
+}
+
+.app-container {
+  padding: 24px 16px;
+}
+
+.card-form {
+  max-width: 520px;
+  margin: 20px auto;
+}
+
+.brand-title {
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.cart-badge {
+  font-size: 0.7rem;
+}
+
+@media (max-width: 768px) {
+  .card-form {
+    max-width: 92%;
+  }
+}
